@@ -1,12 +1,14 @@
 import { data } from "../data/data";
+import { maxBy } from "./e17";
 
 // SPACE DATA EXERCISE 16
 // Return the year with the greatest number of Asteroids discoveries
 // Return example: 1902
 
 export function getGreatestDiscoveryYear(data) {
-  // Your code goes here...
-  // feel free to import your `maxBy` or `minBy` methods from previous lessons
+  const dCts = {};
+  data.asteroids.forEach(a => dCts[a.discoveryYear] = (dCts[a.discoveryYear] || 0) + 1);
+  return Number(maxBy(Object.entries(dCts), entry => entry[1])[0]);
 }
 
 // === TEST YOURSELF ===
